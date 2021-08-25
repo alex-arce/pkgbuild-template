@@ -1,0 +1,17 @@
+pkgname=sed
+pkgver=4.8
+pkgrel=1
+pkgdesc="SED the stream editor"
+arch=("x86_64")
+license=('GPL')
+source=("https://ftp.gnu.org/gnu/sed/$pkgname-$pkgver.tar.gz")
+build() {
+        cd "$pkgname-$pkgver"
+        ./configure --prefix=/usr
+        make
+}
+package() {
+        cd "$pkgname-$pkgver"
+        make DESTDIR="$pkgdir/" install
+}
+md5sums=("4b9b442ae2527ac316d2915facc41622")
